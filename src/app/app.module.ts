@@ -6,11 +6,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginComponent} from '../components/login/login'
+import { CredentialsProvider } from '../providers/credentials/credentials';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +25,11 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   providers: [
+    CredentialsProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CredentialsProvider
   ]
 })
 export class AppModule {}

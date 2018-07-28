@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
 import Parse from 'parse';
+import {CredentialsProvider} from '../../providers/credentials/credentials'
 
 @Component({
   selector: 'page-home',
@@ -12,8 +13,9 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public platform: Platform,
+    public Credentials:CredentialsProvider
   ) {
-    Parse.initialize("YOUR-APP-ID", "YOUR-JS-KEY");
+    Parse.initialize(Credentials.getAppId(), Credentials.getJavascriptKey());
     Parse.serverURL = 'https://parseapi.back4app.com/';
 
     let install = new Parse.Installation();
