@@ -17,27 +17,32 @@ export class LoginComponent {
 
   username: string;
   password; string;
+  email: string;
   text: string;
   @Input() redirectPage: any;
 
   signUp() {
-    Parse.User.signUp(this.username, this.password).then((resp) => {
-      console.log('Logged in successfully', resp);
-
-      // Clears up the form
+    var user = new Parse.User();
+    user.set('username',this.username);
+    user.set('email',this.email);
+    user.set('password',this.password);
+    user.signUp(null,{uccess:(user)=>{
       this.username = '';
       this.password = '';
       this.toastCtrl.create({
         message: 'Account created successfully',
-        duration: 2000
+        duration: 3000
       }).present();
-    }, err => {
-      console.log('Error signing in', err);
 
+    },error:(user,error)=>{
+
+      this.username = '';
+      this.password = '';
       this.toastCtrl.create({
-        message: err.message,
-        duration: 2000
+        message: 'error creating account: '+error.message,
+        duration: 3000
       }).present();
+    }
     });
   }
 
@@ -46,7 +51,7 @@ export class LoginComponent {
       console.log('Logged in successfully', resp);
 
       // If you app has Tabs, set root to TabsPage
-      this.navCtrl.setRoot('HomePage')
+      this.navCtrl.setRoot(this.redirectPage)
     }, err => {
       console.log('Error logging in', err);
 
@@ -64,8 +69,6 @@ export class LoginComponent {
     if (currentUser && this.redirectPage)
       this.navCtrl.push(this.redirectPage);
 
-    console.log('current user', currentUser.getUsername());
-    console.log('Hello LoginComponent Component');
   }
 
 }

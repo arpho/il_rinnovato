@@ -29,7 +29,7 @@ export class HomePage {
       error: (install, error) => {
         // Execute any logic that should take place if the save fails.
         // error is a Parse.Error with an error code and message.
-        this.result = ('Failed to create new object, with error code:' + error.message.toString());
+        this.result = ('Failed to create new object, with error code:' + error.message.toString()+ " "+error.code);
       }
     });
   }
