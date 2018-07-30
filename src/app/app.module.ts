@@ -7,19 +7,23 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ProfilePage } from '../pages/profile/profile'
 import { LoginComponent } from '../components/login/login'
 import { CredentialsProvider } from '../providers/credentials/credentials';
 import { DynamicFormComponent } from '../../src/components/dynamic-form/dynamic-form';
 import { QuestionService } from '../components/dynamic-form/services/question.service';
-import {DynamicFormQuestionComponent} from '../components/dynamic-form/components/dynamic-form/dynamic-form-question.component';
+import { DynamicFormQuestionComponent } from '../components/dynamic-form/components/dynamic-form/dynamic-form-question.component';
+//import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    ProfilePage,
     LoginComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -29,17 +33,19 @@ import {DynamicFormQuestionComponent} from '../components/dynamic-form/component
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ProfilePage
 
   ],
   providers: [
     QuestionService,
-
+    //UserProvider,
     CredentialsProvider,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    CredentialsProvider
+    CredentialsProvider,
+    //UserProvider
   ]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 <ion-header>
   <ion-navbar>
+      <button ion-button menuToggle><ion-icon name='menu'></ion-icon></button>
     <ion-title>
       Il Rinnovato
     </ion-title>
@@ -7,7 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-  <h4>{{result}}</h4>
+    <ion-menu [content]="mycontent" side="left">
+        <ion-content>
+          <ion-list>
+            <ion-icon name ='person' (click)="go2Profile($event)"></ion-icon>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      
+      <ion-nav #mycontent [root]="rootPage"></ion-nav>
+  <h4>{{message}}</h4>
+
+  
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
   <login></login>
   <dynamic-form [questions]="questions"></dynamic-form>
 </ion-content>

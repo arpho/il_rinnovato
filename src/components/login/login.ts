@@ -23,26 +23,27 @@ export class LoginComponent {
 
   signUp() {
     var user = new Parse.User();
-    user.set('username',this.username);
-    user.set('email',this.email);
-    user.set('password',this.password);
-    user.signUp(null,{uccess:(user)=>{
-      this.username = '';
-      this.password = '';
-      this.toastCtrl.create({
-        message: 'Account created successfully',
-        duration: 3000
-      }).present();
+    user.set('username', this.username);
+    user.set('email', this.email);
+    user.set('password', this.password);
+    user.signUp(null, {
+      uccess: (user) => {
+        this.username = '';
+        this.password = '';
+        this.toastCtrl.create({
+          message: 'Account created successfully',
+          duration: 3000
+        }).present();
 
-    },error:(user,error)=>{
+      }, error: (user, error) => {
 
-      this.username = '';
-      this.password = '';
-      this.toastCtrl.create({
-        message: 'error creating account: '+error.message,
-        duration: 3000
-      }).present();
-    }
+        this.username = '';
+        this.password = '';
+        this.toastCtrl.create({
+          message: 'error creating account: ' + error.message,
+          duration: 3000
+        }).present();
+      }
     });
   }
 
@@ -51,6 +52,7 @@ export class LoginComponent {
       console.log('Logged in successfully', resp);
 
       // If you app has Tabs, set root to TabsPage
+      if (this.redirectPage) 
       this.navCtrl.setRoot(this.redirectPage)
     }, err => {
       console.log('Error logging in', err);
