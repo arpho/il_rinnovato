@@ -1,8 +1,8 @@
-import { Injectable }       from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { DropdownQuestion } from '../model/question-dropdown';
-import { QuestionBase }     from '../model/question-base';
-import { TextboxQuestion }  from '../model/question-textbox';
+import { QuestionBase } from '../model/question-base';
+import { TextboxQuestion } from '../model/question-textbox';
 
 @Injectable()
 export class QuestionService {
@@ -17,10 +17,10 @@ export class QuestionService {
         key: 'brave',
         label: 'Bravery Rating',
         options: [
-          {key: 'solid',  value: 'Solid'},
-          {key: 'great',  value: 'Great'},
-          {key: 'good',   value: 'Good'},
-          {key: 'unproven', value: 'Unproven'}
+          { key: 'solid', value: 'Solid' },
+          { key: 'great', value: 'Great' },
+          { key: 'good', value: 'Good' },
+          { key: 'unproven', value: 'Unproven' }
         ],
         order: 3
       }),
