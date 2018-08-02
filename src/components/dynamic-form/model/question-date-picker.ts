@@ -1,26 +1,18 @@
 import { QuestionBase } from './question-base';
 import { DatePicker } from '@ionic-native/date-picker'
 
-export class DatePickerQuestion extends QuestionBase<string> {
+export class DatePickerQuestion extends QuestionBase<Date> {
   controlType = 'date';
-  options: { key: string, value: string }[] = [];
+  options: { key: string, value: Date }[] = [];
   date: Date
+  value: Date
 
-  constructor(options: {} = {},
-    public datePicker: DatePicker
+  constructor(options: { value?: Date, label?: string, required?: boolean, key?: string, order?: number } = {},
   ) {
     super(options);
     this.options = options['options'] || [];
-    this.date = new Date(options.value);
-    this.datePicker = new DatePicker();
-    this.datePicker.show({
-      date: this.date,
-      mode: 'date',
-
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
+    this.value = new Date(options.value);
+    console.log('oii')
 
   }
 }

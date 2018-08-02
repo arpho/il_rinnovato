@@ -67,7 +67,7 @@ export class LoginComponent {
   constructor(public toastCtrl: ToastController,
     public navCtrl: NavController
   ) {
-    var currentUser = Parse.User.current();
+    const currentUser = Parse.User.current();
     if (currentUser && this.redirectPage)
       this.navCtrl.push(this.redirectPage);
 

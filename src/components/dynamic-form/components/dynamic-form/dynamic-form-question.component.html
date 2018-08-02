@@ -2,15 +2,20 @@
     <label [attr.for]="question.key">{{question.label}}</label>
   
     <div [ngSwitch]="question.controlType">
-  
-      <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+      <ion-item *ngSwitchCase="'textbox'" >
+      <input [formControlName]="question.key"
               [id]="question.key" [type]="question.type">
-  
-              <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+       </ion-item>       
+              <ion-item *ngSwitchCase="'dropdown'">
+              <select [id]="question.key"  [formControlName]="question.key">
         <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
       </select>
-
-              <ion-datetime [id]="question.key" *ngSwitchCase="'date'" [formControlName]="question.key"></ion-datetime>
+    </ion-item>
+              <ion-item *ngSwitchCase="'date'" >
+              <ion-datetime [id]="question.key"  displayFormat="DDDD DD-MM-YYYY" [formControlName]="question.key"
+              DayNames="Domenica, Lunedì,Martedì,Mercoledì,Giovedì,Venerdì,Sabato"
+              ></ion-datetime>
+            </ion-item>
   
     </div> 
   

@@ -22,15 +22,16 @@ import { DatePicker } from '@ionic-native/date-picker';
 })
 export class ProfilePage {
   questions: QuestionBase<any>[]
+  user: Parse.User
+  nome: string
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     Credentials: CredentialsProvider) {
     Parse.initialize(Credentials.getAppId(), Credentials.getJavascriptKey());
     Parse.serverURL = 'https://parseapi.back4app.com/';
-    let user = Parse.User.current();
+    this.user = Parse.User.current();
     let today = new Date();
-
     let tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24))
     this.questions = [
 
@@ -38,29 +39,29 @@ export class ProfilePage {
 
       new TextboxQuestion({
         key: 'username',
-        label: 'username',
-        value: user.getUsername(),
+        label: 'Username',
+        value: this.user.getUsername(),
         required: true,
         order: 1
       }),
       new TextboxQuestion({
-        key: 'Cognome',
-        label: 'cognome',
-        value: user.get('cognome'),
+        key: 'cognome',
+        label: 'Cognome',
+        value: this.user.get('cognome'),
         required: false,
         order: 2
       }),
       new TextboxQuestion({
         key: 'nome',
-        label: 'nome',
-        value: user.get('nome'),
+        label: 'Nome',
+        value: this.user.get('nome'),
         required: false,
         order: 3
       }),
       new DropdownQuestion({
         key: 'sesso',
-        label: 'sesso',
-        value: user.get('sesso'),
+        label: 'Sesso',
+        value: this.user.get('sesso'),
         options: [
           { key: 'uomo', value: 'uomo' },
           { key: 'donna', value: 'donna' },
@@ -70,16 +71,22 @@ export class ProfilePage {
       new DatePickerQuestion({
         key: 'dob',
         label: 'Data di nascita',
-        value: tomorrow,//user.get('dob'),
-        required: false,
-        order: 4
-      }, new DatePicker()),
+        value: new Date(this.user.get('dob')),
+        required: true,
+        order: 5
+      })
 
 
     ].sort((a, b) => a.order - b.order);
+    console.log(this.questions)
   }
-  submit(data) {
+  submitted(data) {
     console.log('submitted', data)
+    this.user.set('nome', data.nome);
+    this.user.set('cognome', data.cognome)
+    this.user.set('sesso', data.sesso)
+    this.user.set('dob', data.dob)
+    this.user.save()
   }
 
   ionViewDidLoad() {
