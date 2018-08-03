@@ -71,7 +71,7 @@ export class ProfilePage {
       new DatePickerQuestion({
         key: 'dob',
         label: 'Data di nascita',
-        value: new Date(this.user.get('dob')),
+        value: new Date(this.user.get('dob')).toISOString(),
         required: true,
         order: 5
       })
