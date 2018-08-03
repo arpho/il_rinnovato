@@ -13,7 +13,9 @@
     </ion-item>
               <ion-item *ngSwitchCase="'date'" >
               <ion-datetime [id]="question.key"  displayFormat="DDDD DD-MM-YYYY" [formControlName]="question.key"
-              DayNames="Domenica, Lunedì,Martedì,Mercoledì,Giovedì,Venerdì,Sabato"
+              [dayNames] = "dayNames"
+              [doneText]= "doneText"
+              [cancelText] = "cancelText"
               ></ion-datetime>
             </ion-item>
   
