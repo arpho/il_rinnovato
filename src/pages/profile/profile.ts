@@ -81,7 +81,6 @@ export class ProfilePage {
     console.log(this.questions)
   }
   submitted(data) {
-    console.log('submitted', data)
     this.user.set('nome', data.nome);
     this.user.set('cognome', data.cognome)
     this.user.set('sesso', data.sesso)

@@ -14,15 +14,12 @@ import { QuestionBase } from '../dynamic-form/model/question-base';
 export class ProfileComponent {
   @Input() questions: QuestionBase<any>[]
   @Output() submittedForm = new EventEmitter<any>()
-  text: string;
 
   constructor() {
     console.log('Hello ProfileComponent Component');
-    this.text = 'Hello World Profile';
   }
 
   submitted(data) {
-    console.log('form', data)
     this.submittedForm.emit(data)
   }
 }
