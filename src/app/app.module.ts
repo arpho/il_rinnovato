@@ -14,7 +14,7 @@ import { DynamicFormComponent } from '../../src/components/dynamic-form/dynamic-
 import { QuestionService } from '../components/dynamic-form/services/question.service';
 import { DynamicFormQuestionComponent } from '../components/dynamic-form/components/dynamic-form/dynamic-form-question.component';
 import { DatePicker } from '@ionic-native/date-picker';
-//import { UserProvider } from '../providers/user/user';
+import { ProfileComponent } from '../components/profile/profile'
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { DatePicker } from '@ionic-native/date-picker';
     HomePage,
     ProfilePage,
     LoginComponent,
+    ProfileComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent
 

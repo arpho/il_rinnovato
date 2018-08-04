@@ -12,7 +12,6 @@ export class DatePickerQuestion extends QuestionBase<string> {
     super(options);
     this.options = options['options'] || [];
     this.value = new Date(options.value).toISOString();
-    console.log('oii')
 
   }
 }
