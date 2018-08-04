@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form';
-import { ProfileComponent } from './profile/profile';
 @NgModule({
-	declarations: [,
-    DynamicFormComponent,
-    ProfileComponent],
+	declarations: [],
 	imports: [],
-	exports: [
-    DynamicFormComponent,
-    ProfileComponent]
+	exports: []
 })
 export class ComponentsModule {}
